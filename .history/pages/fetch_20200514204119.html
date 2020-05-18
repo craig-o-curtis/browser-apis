@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Fetch API Example</title>
+        <style type="text/css">
+        </style>
+        <link rel="stylesheet" href="./style.css" />
+    </head>
+    <body>
+        <h1>Using the Fetch API</h1>
+        <div id="content">
+            <p>The fetch API makes AJAX-style data requests easier to handle.</p>
+            <p>Open the developer tools console to see the responses from the server.</p>
+        </div>
+
+        <script>
+            window.addEventListener("load", async () => {
+                // fetch('https://httpbin.org/json')
+                //     .then((res) => {
+                //         console.info(res);
+                //     })
+                //     .catch((err) => {
+                //         console.error(`error ${err}`);
+                //     });
+                // TODO: perform a POST function with data in the body
+                const awaittest = await fetch('https://httpbin.org/json');
+                console.log('async worked')
+                console.log(awaittest)
+                
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Notifications Example</title>
+        <style type="text/css">
+            form {
+                border: 1px dotted gray;
+                padding: 10px;
+            }
+
+            form>div {
+                margin-bottom: 5px;
+            }
+        </style>
+        <link rel="stylesheet" href="./style.css" />
+    </head>
+    <body>
+        <h1>Using Native Notifications Example</h1>
+        <div id="content">
+            <p>The Notifications API gives web pages a way to display notifications to the user via the platform's
+                built in mechanism for displaying them.</p>
+            <div>
+                <button id="btnRequest">Request Notification Permission</button>
+                <button id="btnShow1">Show Basic Notification</button>
+            </div>
+            <div>
+                <p>Custom Notification Options:</p>
+                <form action="">
+                    <div>
+                        <label for="notTitle">Title: </label>
+                        <input id="notTitle" type="text" value="Notification Title">
+                    </div>
+                    <div>
+                        <label for="notBody">Body text:</label>
+                        <input type="text" id="notBody" value="Sample text">
+                    </div>
+                    <div>
+                        <label for="notPersist">Make Persistent</label>
+                        <input type="checkbox" id="notPersist">
+                    </div>
+                    <div>
+                        <label for="notIcon">Use Icon</label>
+                        <input type="checkbox" id="notIcon">
+                    </div>
+                </form>
+                <button id="btnShow2">Show Custom Notification</button>
+            </div>
+        </div>
+        <script>
+            window.addEventListener("load", () => {
+                document.getElementById("btnRequest").addEventListener("click", async () => {
+                    // Request notifications permission from the user
+                    const permission = await Notification.requestPermission();
+                    console.log(permission)
+                    console.log(Notification)
+                    console.log(Notification.permission)
+                    // const removePermission = Notification.removePermission();
+                    // console.log(removePermission)
+                })
+
+                document.getElementById("btnShow1").addEventListener("click", () => {
+                    // check to make sure we have permission to show notifications
+                    if (Notification.permission === 'granted') {
+                        const notify = new Notification('Basic Notification');
+                    }
+                })
+
+                document.getElementById("btnShow2").addEventListener("click", () => {
+                    if (Notification.permission == "granted") {
+                        // Get the options settings
+                        var title = document.getElementById("notTitle").value;
+                        var body = document.getElementById("notBody").value;
+                        var useIcon = document.getElementById("notIcon").checked;
+                        var isPersistent = document.getElementById("notPersist").checked;
+
+                        // Set up the notification options
+
+
+                        // Show the notification
+
+
+                        // Handle a click on the notification to open a new page
+
+                    }
+                })
+            });
+        </script>
+    </body>
+</html>

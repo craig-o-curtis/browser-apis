@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Fetch API Example</title>
+    <style type="text/css"></style>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <h1>Using the Fetch API</h1>
+    <div id="content">
+      <p>The fetch API makes AJAX-style data requests easier to handle.</p>
+      <p>
+        Open the developer tools console to see the responses from the server.
+      </p>
+    </div>
+
+    <script>
+      // click for promise
+      window.addEventListener("click", (e) => {
+        fetch("https://httpbin.org/json")
+          .then((res) => {
+            console.info(res);
+            if (res.ok) {
+              return res.text();
+            }
+          })
+          .then((returnedData) => {
+            console.log(`returnedData`);
+            console.log(returnedData);
+          })
+          .catch((err) => {
+            console.error(`error ${err}`);
+          });
+      });
+      window.addEventListener("load", async () => {
+        try {
+          const awaitRes = await fetch("https://httpbin.org/json");
+          console.log("async worked");
+          console.log(awaitRes);
+          console.log(awaitRes.headers.get("Content-Type"));
+          console.log(awaitRes.redirected);
+          console.log(awaitRes.status);
+          console.log(awaitRes.statusText);
+          console.log(awaitRes.type);
+          console.log(awaitRes.url);
+          console.log(awaitRes);
+
+          let resText;
+          if (awaitRes.ok) {
+            resText = await awaitRes.text(); // this is async
+            console.log("resText");
+            console.log(resText);
+          }
+        } catch (err) {
+          console.error(err);
+        }
+      });
+    </script>
+  </body>
+</html>
