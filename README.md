@@ -623,5 +623,3 @@ if (typeof registerPaint !== "undefined") {
   registerPaint("samplepainter", SampleCSSPaint);
 }
 ```
-
-### CSS Paint API Parameters
